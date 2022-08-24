@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="has-navbar-fixed-top">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,47 +28,41 @@
 </head>
 <body>
     <div class="container">
-        <nav class="navbar is-justify-content-center" role="navigation" aria-label="main navigation" >
+        <nav class="navbar is-justify-content-center is-fixed-top" role="navigation" aria-label="main navigation" >
             <a class="navbar-item">
                 Yo
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" onclick="scrollToSection('xp')">
                 Experiencia
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item"  onclick="scrollToSection('educacion')">
                 Educacion
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item"  onclick="scrollToSection('hobbies')">
                 Hobbies
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item"  onclick="scrollToSection('habilidades')">
                 Habilidades
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item"  onclick="scrollToSection('contacto')">
                 Contacto
             </a>
         </nav>
         <div class="columns">
             <div class="column content is-three-fifths is-offset-one-fifth">
-                <div class="box">
-                    <h1>
-                        yo
-                    </h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio corporis corrupti obcaecati consequuntur? Praesentium, voluptate eos perspiciatis quam iste, quae vel nihil eaque mollitia consectetur nulla deserunt ex, dolorem provident?</p>
-                </div>
-                <div class="box">
+                <div class="box" id="xp">
                     <h1>
                         Experiencia
                     </h1>
                     <p>NINGUNA WEA</p>
                 </div>
-                <div class="box">
+                <div class="box" id="educacion">
                     <h1>
                         Educacion
                     </h1>
                     <p>Cursando Ingenieria en Informatica en Inacap</p>
                 </div>
-                <div class="box">
+                <div class="box" id="hobbies">
                     <h1>
                         Hobbies
                     </h1>
@@ -86,7 +80,7 @@
                         <iframe src="https://www.youtube.com/embed/COQR9A8D4XQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
-                <div class="box">
+                <div class="box" id="habilidades">
                     <h1>
                         Habilidades
                     </h1>
@@ -100,11 +94,11 @@
                         <li>SQL</li>
                     </ul>
                 </div>
-                <div class="box">
+                <div class="box" id="contacto">
                     <h1>
                         Contacto
                     </h1>
-                    <p></p>
+                    <p><a href="mailto:alejandrojarpa97@gmail.com">alejandrojarpa97@gmail.com</a></p>
                 </div>
             </div>
         </div>
@@ -132,5 +126,18 @@
         </div>
 
     </footer>
+
+    <script>
+        function scrollToSection(id)
+    	{
+			var elem = document.getElementById(id);
+            elem.scrollIntoView();
+
+            var scrolledY = window.scrollY;
+            if(scrolledY){
+                window.scroll(0, scrolledY - 52);
+            }
+        }
+    </script>
 </body>
 </html>
