@@ -17,7 +17,7 @@
             padding-bottom: 56.25%;
         }
         .video-container iframe {
-            position: absolute;
+            position: absolute; 
             top: 0;
             left: 0;
             width: 100%;
@@ -28,25 +28,34 @@
 </head>
 <body>
     <div class="container">
-        <nav class="navbar is-justify-content-center is-fixed-top" role="navigation" aria-label="main navigation" >
-            <a class="navbar-item">
-                Yo
-            </a>
-            <a class="navbar-item" onclick="scrollToSection('xp')">
-                Experiencia
-            </a>
-            <a class="navbar-item"  onclick="scrollToSection('educacion')">
-                Educacion
-            </a>
-            <a class="navbar-item"  onclick="scrollToSection('hobbies')">
-                Hobbies
-            </a>
-            <a class="navbar-item"  onclick="scrollToSection('habilidades')">
-                Habilidades
-            </a>
-            <a class="navbar-item"  onclick="scrollToSection('contacto')">
-                Contacto
-            </a>
+        <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" >
+            <div class="navbar-brand">
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="navbar-menu is-justify-content-center" id="navMenu">
+                <a class="navbar-item">
+                    Yo
+                </a>
+                <a class="navbar-item" onclick="scrollToSection('xp')">
+                    Experiencia
+                </a>
+                <a class="navbar-item"  onclick="scrollToSection('educacion')">
+                    Educacion
+                </a>
+                <a class="navbar-item"  onclick="scrollToSection('hobbies')">
+                    Hobbies
+                </a>
+                <a class="navbar-item"  onclick="scrollToSection('habilidades')">
+                    Habilidades
+                </a>
+                <a class="navbar-item"  onclick="scrollToSection('contacto')">
+                    Contacto
+                </a>
+            </div>
         </nav>
         <div class="columns">
             <div class="column content is-three-fifths is-offset-one-fifth">
@@ -103,7 +112,7 @@
             </div>
         </div>
     </div>
-    <footer class="footer">
+    <footer class="footer" style="margin-top: 25px;">
         <div class="content has-text-centered">
             <a href="https://twitter.com/haruqleao">
                 <span class="icon">
@@ -128,16 +137,43 @@
     </footer>
 
     <script>
+
+        function toggleBurger(burger) {
+            // Get the target from the "data-target" attribute
+            const target = burger.dataset.target;
+            const $target = document.getElementById(target);
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            burger.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+        }
+
         function scrollToSection(id)
     	{
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            // Add a click event on each of them
+            $navbarBurgers.forEach( el => {
+                toggleBurger(el);
+            });
+
 			var elem = document.getElementById(id);
             elem.scrollIntoView();
-
-            var scrolledY = window.scrollY;
-            if(scrolledY){
-                window.scroll(0, scrolledY - 52);
-            }
+                var scrolledY = window.scrollY;
+                if(scrolledY){
+                    window.scroll(0, scrolledY - 52);
+                }
         }
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get all "navbar-burger" elements
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            // Add a click event on each of them
+            $navbarBurgers.forEach( el => {
+                el.addEventListener('click', () => {
+                    toggleBurger(el);
+                });
+            });
+        }); 
+        
     </script>
 </body>
 </html>
